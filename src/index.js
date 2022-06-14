@@ -1,13 +1,11 @@
 
-const http = require('http');
+const express = require('express');
 
-// Create a local server to receive data from
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({
-    data: 'Hello World!'
-  }));
+const app = express();
 
+app.get('/', (req, res) => {
+  console.log('Hello');
+  res.end()
 });
 
-server.listen(5000);
+app.listen(5000)
