@@ -1,22 +1,38 @@
 
 class TaskController {
 
-  getTask(req, res){
-    console.log(req.params.id);
-    res.status(200).send({id: req.params.id})
+  getTask(req, res, next){
+    try {
+      console.log(req.params.id);
+      res.status(200).send({id: req.params.id})
+    } catch (error) {
+      next(error)
+    }
   };
 
-  createTask(req, res){
-    const task = {name: 'Clean', isDone: false}
-    res.status(200).send({data: task})
+  createTask(req, res, next){
+    try {
+      const task = {name: 'Clean', isDone: false}
+      res.status(200).send({data: task})
+    } catch (error) {
+      next(error)
+    }
   };
 
-  updateTask(req, res){
-    res.status(200).send({data: 'task'})
+  updateTask(req, res, next){
+    try {
+      res.status(200).send({data: 'task'})
+    } catch (error) {
+      next(error)
+    }
   };
 
-  deleteTask(req, res){
-    res.status(200).send({data: 'task'})
+  deleteTask(req, res, next){
+    try {
+      res.status(200).send({data: 'task'})
+    } catch (error) {
+      next(error)
+    }
   };
 
 };
