@@ -1,11 +1,10 @@
 
 const express = require('express');
-const { middleWare } = require('./middleWares');
-const { getHome } = require('./routes');
+const router = require('./routes');
 
 const app = express();
 
-app.get('/tasks/:id/get', middleWare, getHome);
+app.use('/', router);
 
 app.listen(5000, () => {
   console.log('Server started');

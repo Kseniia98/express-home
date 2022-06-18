@@ -1,6 +1,8 @@
-const getHome = (req, res) => {
-  console.log(req.params.id);
-  res.status(200).send({id: req.params.id})
-};
+const express = require("express");
+const taskRouter = require("./task.router");
 
-module.exports.getHome = getHome;
+const router = express.Router();
+
+router.use('/tasks', taskRouter)
+
+module.exports = router;
