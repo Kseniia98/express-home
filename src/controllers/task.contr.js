@@ -1,4 +1,6 @@
 
+const tasksDB = [];
+
 class TaskController {
 
   getTask(req, res, next){
@@ -12,8 +14,11 @@ class TaskController {
 
   createTask(req, res, next){
     try {
-      const task = {name: 'Clean', isDone: false}
-      res.status(200).send({data: task})
+      const task = { ...req.body };
+      const newTask = {...task, taskId: tasksDB.length};''
+      tasksDB.push(newTask)
+
+      res.status(200).send({data: newTask})
     } catch (error) {
       next(error)
     }
