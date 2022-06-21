@@ -1,14 +1,14 @@
 const express = require("express");
 const TaskController = require("../controllers/task.contr");
 const { middleWare } = require("../middleWares");
-const { createTaskMiddleWare } = require("../middleWares/task.mw");
+const { createTaskMiddleWare, updateTaskMiddleWare, paramsTaskMiddleWare } = require("../middleWares/task.mw");
 
 const taskRouter = express.Router();
 
-taskRouter.get('/:id/get', middleWare, TaskController.getTask);
-taskRouter.delete('/:id', TaskController.deleteTask);
+taskRouter.get('/:id/get', paramsTaskMiddleWare, TaskController.getTask);
+taskRouter.delete('/:id', paramsTaskMiddleWare, TaskController.deleteTask);
 
 taskRouter.post('/create', createTaskMiddleWare,  TaskController.createTask);
-taskRouter.patch('/', TaskController.updateTask);
+taskRouter.patch('/:id', updateTaskMiddleWare, TaskController.updateTask);
 
 module.exports = taskRouter;
