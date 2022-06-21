@@ -1,6 +1,5 @@
 const express = require("express");
 const TaskController = require("../controllers/task.contr");
-const { middleWare } = require("../middleWares");
 const { createTaskMiddleWare, updateTaskMiddleWare, paramsTaskMiddleWare } = require("../middleWares/task.mw");
 
 const taskRouter = express.Router();
